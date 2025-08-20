@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IIBT Trainings - Blockchain Education & Bootcamps | India's First Blockchain Institute</title>
+<style>
+/* Enhanced IIBT Logo Text Styling */
+.logo {
+background: transparent !important;
+box-shadow: none !important;
+padding: 1.5rem 2.5rem;
+border-radius: 28px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 110px;
+margin: 1.2rem 0;
+position: relative;
+z-index: 1;
+transition: all 0.3s ease;
+}
+
+/* Add subtle hover effect */
+.logo:hover {
+transform: scale(1.05);
+background: rgba(0, 212, 170, 0.05) !important;
+}
+
+.logo img {
+height: 85px;
+width: auto;
+display: block;
+position: relative;
+z-index: 1;
+transition: all 0.3s ease;
+filter: drop-shadow(0 2px 8px rgba(0, 212, 170, 0.2));
+}
+
+/* Enhanced hover effect for the image */
+.logo:hover img {
+filter: drop-shadow(0 4px 12px rgba(0, 212, 170, 0.4));
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+line-height: 1.6;
+color: #fff;
+background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+overflow-x: hidden;
+padding-top: 150px;
+}
+
+/* Animated Background Elements */
+.bg-animation {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.1;
+}
+
+.floating-cube {
+position: absolute;
+width: 20px;
+height: 20px;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+animation: float 8s infinite ease-in-out;
+border-radius: 3px;
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-30px) rotate(180deg); }
+}
+
+/* Header */
+header {
+position: fixed;
+top: 0;
+width: 100%;
+background: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(10px);
+z-index: 1000;
+transition: all 0.3s ease;
+}
+
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0.8rem 1.5rem;
+min-height: 90px;
+}
+
+.social-media {
+display: flex;
+gap: 1rem;
+align-items: center;
+flex-shrink: 0;
+}
+
+.social-text {
+color: #fff;
+font-size: 0.9rem;
+margin-right: 1rem;
+font-weight: 500;
+}
+
+.social-icons {
+display: flex;
+gap: 0.5rem;
+}
+
+.social-icons a {
+width: 25px;
+height: 25px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+text-decoration: none;
+transition: all 0.3s ease;
+font-size: 1.1rem;
+}
+
+.social-icons .facebook { background: #3b5998; }
+.social-icons .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.social-icons .linkedin { background: #0077b5; }
+
+.social-icons a:hover {
+transform: scale(1.1);
+box-shadow: 0 5px 15px rgba(0, 212, 170, 0.3);
+}
+
+nav {
+background: rgba(0, 0, 0, 0.9);
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links {
+display: flex;
+list-style: none;
+gap: 0;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+.nav-links li {
+flex: 1;
+}
+
+.nav-links a {
+color: #fff;
+text-decoration: none;
+transition: all 0.3s ease;
+position: relative;
+padding: 1rem;
+display: block;
+text-align: center;
+font-weight: 500;
+text-transform: uppercase;
+font-size: 0.9rem;
+letter-spacing: 0.5px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+color: #00d4aa;
+background: rgba(0, 212, 170, 0.1);
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 3px;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+width: 100%;
+}
+
+.hamburger {
+display: none;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 40px;
+height: 40px;
+cursor: pointer;
+margin: 0 1rem;
+z-index: 1100;
+}
+
+.hamburger span {
+display: block;
+width: 28px;
+height: 4px;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+margin: 4px 0;
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+
+/* Main Content */
+.main-content {
+min-height: 100vh;
+padding-top: 2rem;
+}
+
+/* Page Header */
+.page-header {
+text-align: center;
+padding: 4rem 2rem 3rem;
+background: radial-gradient(circle at 50% 50%, rgba(0, 212, 170, 0.1) 0%, transparent 70%);
+}
+
+.page-header h1 {
+font-size: 3rem;
+margin-bottom: 1rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff, #ff6b6b);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.2;
+}
+
+.page-header p {
+font-size: 1.2rem;
+max-width: 800px;
+margin: 0 auto;
+opacity: 0.9;
+line-height: 1.8;
+}
+
+/* Training Sections */
+.training-section {
+padding: 6rem 2rem;
+max-width: 1400px;
+margin: 0 auto;
+position: relative;
+}
+
+.training-section:nth-child(even) {
+background: rgba(0, 0, 0, 0.2);
+}
+
+.training-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+margin-bottom: 3rem;
+}
+
+.training-content.reverse {
+direction: rtl;
+}
+
+.training-content.reverse > * {
+direction: ltr;
+}
+
+.training-text {
+padding: 2rem 0;
+}
+
+.training-title {
+font-size: 2.8rem;
+margin-bottom: 1.5rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.2;
+}
+
+.training-description {
+font-size: 1.2rem;
+line-height: 1.8;
+margin-bottom: 2rem;
+opacity: 0.9;
+}
+
+.training-features {
+margin-bottom: 2rem;
+}
+
+.feature-item {
+display: flex;
+align-items: center;
+margin-bottom: 1rem;
+padding: 0.8rem 0;
+border-left: 3px solid rgba(0, 212, 170, 0.3);
+padding-left: 1.5rem;
+transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+border-left-color: #00d4aa;
+transform: translateX(10px);
+}
+
+.feature-icon {
+font-size: 1.5rem;
+margin-right: 1rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.feature-text {
+font-size: 1.1rem;
+font-weight: 500;
+}
+
+.training-image {
+position: relative;
+overflow: hidden;
+border-radius: 20px;
+box-shadow: 0 20px 60px rgba(0, 212, 170, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+height: 400px;
+}
+
+.training-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+.image-overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(0, 212, 170, 0.2), rgba(0, 102, 255, 0.2));
+opacity: 0;
+transition: opacity 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+pointer-events: none;
+}
+
+.training-image:hover .image-overlay {
+opacity: 1;
+}
+
+.overlay-text {
+color: #fff;
+font-size: 1.5rem;
+font-weight: bold;
+text-align: center;
+}
+
+.btn {
+padding: 1.2rem 2.5rem;
+border: none;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+display: inline-block;
+position: relative;
+overflow: hidden;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+color: #fff;
+box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+}
+
+.btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 212, 170, 0.4);
+}
+
+/* Hackathons & Competitions Section */
+.events-section {
+padding: 6rem 2rem;
+background: linear-gradient(135deg, rgba(0, 212, 170, 0.05), rgba(0, 102, 255, 0.05));
+}
+
+.events-container {
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.section-title {
+text-align: center;
+font-size: 3rem;
+margin-bottom: 3rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.events-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+margin-bottom: 4rem;
+}
+
+.event-block {
+background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(26, 26, 46, 0.3));
+border: 1px solid rgba(0, 212, 170, 0.2);
+border-radius: 25px;
+padding: 3rem;
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.event-block:hover {
+transform: translateY(-10px);
+border-color: #00d4aa;
+box-shadow: 0 25px 60px rgba(0, 212, 170, 0.2);
+}
+
+.event-block::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+}
+
+.event-header {
+display: flex;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.event-icon {
+font-size: 3rem;
+margin-right: 1.5rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.event-title {
+font-size: 1.8rem;
+color: #00d4aa;
+margin: 0;
+}
+
+.event-description {
+font-size: 1.1rem;
+line-height: 1.8;
+margin-bottom: 2rem;
+opacity: 0.9;
+}
+
+.event-highlights {
+margin-bottom: 2rem;
+}
+
+.highlight-item {
+display: flex;
+align-items: center;
+margin-bottom: 0.8rem;
+color: rgba(255, 255, 255, 0.8);
+}
+
+.highlight-item::before {
+content: '▶';
+color: #00d4aa;
+margin-right: 1rem;
+font-size: 0.8rem;
+}
+
+/* CTA Section */
+.cta-section {
+padding: 6rem 2rem;
+text-align: center;
+background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(0, 102, 255, 0.1));
+}
+
+.cta-section h2 {
+font-size: 2.8rem;
+margin-bottom: 1.5rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.cta-section p {
+font-size: 1.2rem;
+max-width: 600px;
+margin: 0 auto 2.5rem;
+opacity: 0.9;
+}
+
+/* Footer */
+footer {
+background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+position: relative;
+overflow: hidden;
+}
+
+footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+}
+
+.footer-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 4rem 2rem 2rem;
+}
+
+.footer-main {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 3rem;
+margin-bottom: 3rem;
+}
+
+.footer-brand {
+max-width: 350px;
+}
+
+.footer-logo {
+display: flex;
+align-items: center;
+margin-bottom: 1.5rem;
+}
+
+.footer-tagline {
+color: #00d4aa;
+font-size: 1.1rem;
+font-weight: 600;
+margin-bottom: 1rem;
+}
+
+.footer-description {
+color: rgba(255, 255, 255, 0.8);
+line-height: 1.6;
+margin-bottom: 2rem;
+}
+
+.footer-social {
+display: flex;
+gap: 1rem;
+margin-bottom: 2rem;
+}
+
+.social-link {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+background: rgba(0, 212, 170, 0.1);
+border: 1px solid rgba(0, 212, 170, 0.2);
+color: #fff;
+text-decoration: none;
+transition: all 0.3s ease;
+backdrop-filter: blur(10px);
+}
+
+.social-link:hover {
+background: #00d4aa;
+color: #000;
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(0, 212, 170, 0.3);
+}
+
+.footer-section h3 {
+color: #fff;
+font-size: 1.2rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+position: relative;
+}
+
+.footer-section h3::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 0;
+width: 30px;
+height: 2px;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+}
+
+.footer-links {
+list-style: none;
+}
+
+.footer-links li {
+margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+color: rgba(255, 255, 255, 0.8);
+text-decoration: none;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+}
+
+.footer-links a:hover {
+color: #00d4aa;
+padding-left: 5px;
+}
+
+.contact-item {
+display: flex;
+align-items: flex-start;
+margin-bottom: 1rem;
+color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-icon {
+margin-right: 1rem;
+color: #ed0404;
+font-size: 1.1rem;
+margin-top: 2px;
+flex-shrink: 0;
+}
+
+.newsletter-section {
+background: rgba(0, 212, 170, 0.05);
+border: 1px solid rgba(0, 212, 170, 0.1);
+border-radius: 15px;
+padding: 2rem;
+margin-bottom: 2rem;
+backdrop-filter: blur(10px);
+}
+
+.newsletter-form {
+display: flex;
+gap: 0.5rem;
+margin-top: 1rem;
+}
+
+.newsletter-input {
+flex: 1;
+padding: 0.8rem 1rem;
+border: 1px solid rgba(0, 212, 170, 0.3);
+border-radius: 25px;
+background: rgba(0, 0, 0, 0.3);
+color: #fff;
+font-size: 0.9rem;
+outline: none;
+transition: all 0.3s ease;
+}
+
+.newsletter-input:focus {
+border-color: #00d4aa;
+box-shadow: 0 0 10px rgba(0, 212, 170, 0.2);
+}
+
+.newsletter-input::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-btn {
+padding: 0.8rem 1.5rem;
+background: linear-gradient(45deg, #00d4aa, #0066ff);
+border: none;
+border-radius: 25px;
+color: #fff;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+flex-shrink: 0;
+}
+
+.newsletter-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+}
+
+.footer-bottom {
+border-top: 1px solid rgba(0, 212, 170, 0.1);
+padding-top: 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 1rem;
+}
+
+.footer-copyright {
+color: rgba(255, 255, 255, 0.6);
+font-size: 0.9rem;
+}
+
+.footer-legal {
+display: flex;
+gap: 2rem;
+}
+
+.footer-legal a {
+color: rgba(255, 255, 255, 0.6);
+text-decoration: none;
+font-size: 0.9rem;
+transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+color: #00d4aa;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.fade-in-up {
+animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+opacity: 0;
+transform: translateY(50px);
+transition: all 0.6s ease;
+}
+
+.scroll-reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.header-top {
+flex-direction: column;
+gap: 0.5rem;
+padding: 0.5rem;
+min-height: auto;
+}
+
+.logo {
+margin: 0.5rem 0;
+padding: 0.5rem 1rem;
+height: 60px;
+}
+
+.logo img {
+height: 65px;
+}
+
+.nav-links {
+flex-direction: column;
+padding: 0;
+position: fixed;
+top: 70px;
+left: 0;
+width: 100vw;
+background: rgba(0,0,0,0.98);
+max-height: 0;
+overflow-y: auto;
+transition: max-height 0.4s ease;
+z-index: 1000;
+box-shadow: 0 8px 24px rgba(0,212,170,0.1);
+}
+
+.nav-links.active {
+max-height: 90vh;
+}
+
+.nav-links li {
+width: 100%;
+text-align: center;
+}
+
+.hamburger {
+display: flex;
+position: absolute;
+top: 15px;
+left: 16px;
+z-index: 1100;
+}
+
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+z-index: 1200;
+background: rgba(0,0,0,0.95);
+}
+
+body {
+padding-top: 85px !important;
+}
+
+.page-header h1 {
+font-size: 2.5rem;
+}
+
+.training-content {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+
+.training-content.reverse {
+direction: ltr;
+}
+
+.events-grid {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+
+.footer-main {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+
+.footer-brand {
+max-width: 100%;
+text-align: center;
+}
+
+.footer-social {
+justify-content: center;
+}
+
+.newsletter-form {
+flex-direction: column;
+}
+
+.footer-bottom {
+flex-direction: column;
+text-align: center;
+}
+
+.footer-legal {
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.training-title {
+font-size: 2.2rem;
+}
+}
+
+@media (max-width: 480px) {
+.logo img {
+height: 55px;
+}
+
+.header-top {
+padding: 0.4rem;
+}
+
+body {
+padding-top: 80px !important;
+}
+
+.page-header h1 {
+font-size: 2rem;
+}
+
+.training-title {
+font-size: 1.8rem;
+}
+
+.footer-container {
+padding: 3rem 1rem 1.5rem;
+}
+
+.social-link {
+width: 40px;
+height: 40px;
+}
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+.logo {
+height: 85px;
+padding: 1rem 2rem;
+margin: 0.2rem 0 0.2rem 0;
+}
+
+.logo img {
+height: 90px;
+}
+
+.header-top {
+padding: 0.5rem 2rem 0.5rem 2rem;
+min-height: 70px;
+}
+
+body {
+padding-top: 160px;
+}
+}
+</style>
+</head>
+<body>
+<!-- Animated Background -->
+<div class="bg-animation" id="bgAnimation"></div>
+
+<!-- Header -->
+<header>
+<div class="header-top">
+<div class="logo">
+<img src="https://res.cloudinary.com/dtwovb0vp/image/upload/v1753288818/4_vll2xc.jpg" alt="IIBT Logo">
+</div>
+<div class="social-media">
+<span class="social-text">FOLLOW US SOCIAL MEDIA :</span>
+<div class="social-icons">
+<a href="https://www.facebook.com/p/IIBT-100068485050354/" class="facebook">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>
+</a>
+<a href="https://www.instagram.com/iibt.hyderabad/" class="instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/iibt-hyderabad-032727257/?originalSubdomain=in" class="linkedin">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<nav>
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="trainings.html" class="active">College Trainings</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+<li><a href="login.html">Login</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+<!-- Page Header -->
+<section class="page-header">
+<h1>Blockchain Training Programs</h1>
+<p>Elevate your skills with India's most comprehensive blockchain education ecosystem. From foundational concepts to advanced implementations, we prepare you for the decentralized future.</p>
+</section>
+
+<!-- Blockchain Training Section -->
+<section class="training-section scroll-reveal">
+<div class="training-content">
+<div class="training-text">
+<h2 class="training-title">🔗 Blockchain Trainings</h2>
+<p class="training-description">From fundamentals to advanced, our trainings cover blockchain architecture, smart contracts, Ethereum, Hyperledger, and real-world industry use cases like finance, healthcare, and supply chain.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">🏗️</span>
+<span class="feature-text">Blockchain Architecture & Consensus Mechanisms</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🔐</span>
+<span class="feature-text">Cryptography & Digital Signatures</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">⚡</span>
+<span class="feature-text">Ethereum & Bitcoin Deep Dive</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🏥</span>
+<span class="feature-text">Real-world Industry Use Cases</span>
+</div>
+</div>
+<a href="#contact" class="btn">Explore Training</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop" alt="Blockchain Training">
+<div class="image-overlay">
+<div class="overlay-text">Master Blockchain Technology</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Bootcamps Section -->
+<section class="training-section scroll-reveal">
+<div class="training-content reverse">
+<div class="training-text">
+<h2 class="training-title">🚀 Intensive Bootcamps</h2>
+<p class="training-description">Hands-on, intensive programs designed to make you industry-ready. Our bootcamps include Ethereum DApp development, Hyperledger solutions, and building real blockchain projects.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">📱</span>
+<span class="feature-text">Ethereum DApp Development</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🏢</span>
+<span class="feature-text">Hyperledger Fabric Solutions</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🛠️</span>
+<span class="feature-text">Real Blockchain Project Building</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">💼</span>
+<span class="feature-text">Industry-Ready Skills Development</span>
+</div>
+</div>
+<a href="#contact" class="btn">Join Bootcamp</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Blockchain Bootcamp">
+<div class="image-overlay">
+<div class="overlay-text">Intensive Learning Experience</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Smart Contract Development Section -->
+<section class="training-section scroll-reveal">
+<div class="training-content">
+<div class="training-text">
+<h2 class="training-title">⚙️ Smart Contract Development</h2>
+<p class="training-description">Deep dive into Solidity programming, smart contract security, gas optimization, and deploying contracts on Ethereum and other EVM-compatible networks.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">💻</span>
+<span class="feature-text">Solidity Programming Language</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🛡️</span>
+<span class="feature-text">Smart Contract Security Best Practices</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🧪</span>
+<span class="feature-text">Testing with Truffle & Hardhat</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🏦</span>
+<span class="feature-text">DeFi Protocol Development</span>
+</div>
+</div>
+<a href="#contact" class="btn">Master Smart Contracts</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop" alt="Smart Contract Development">
+<div class="image-overlay">
+<div class="overlay-text">Code the Future</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DApp Development Section -->
+<section class="training-section scroll-reveal">
+<div class="training-content reverse">
+<div class="training-text">
+<h2 class="training-title">📱 DApp Development</h2>
+<p class="training-description">Build full-stack decentralized applications using React, Web3.js, IPFS, and integrate with popular wallets like MetaMask. Create the next generation of web applications.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">🌐</span>
+<span class="feature-text">Frontend Integration with Web3</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">📦</span>
+<span class="feature-text">IPFS for Decentralized Storage</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">💳</span>
+<span class="feature-text">Wallet Integration (MetaMask, WalletConnect)</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🎨</span>
+<span class="feature-text">NFT Marketplace Development</span>
+</div>
+</div>
+<a href="#contact" class="btn">Build DApps</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="DApp Development">
+<div class="image-overlay">
+<div class="overlay-text">Decentralized Future</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Events Section -->
+<section class="events-section">
+<div class="events-container">
+<h2 class="section-title">Hackathons & Competitions</h2>
+<div class="events-grid">
+<!-- Hackathons -->
+<div class="event-block scroll-reveal">
+<div class="event-header">
+<span class="event-icon">⚡</span>
+<h3 class="event-title">Hackathons</h3>
+</div>
+<p class="event-description">Collaborate, compete, and create at our blockchain hackathons. From DeFi innovations to blockchain for social good, bring your ideas to life and get mentored by experts.</p>
+<div class="event-highlights">
+<div class="highlight-item">DeFi Innovation Challenges</div>
+<div class="highlight-item">Blockchain for Social Good</div>
+<div class="highlight-item">Expert Mentorship Available</div>
+<div class="highlight-item">Prize Pool: ₹5 Lakhs</div>
+<div class="highlight-item">48-Hour Intensive Coding</div>
+</div>
+<a href="#contact" class="btn">Register for Hackathon</a>
+</div>
+
+<!-- Competitions -->
+<div class="event-block scroll-reveal">
+<div class="event-header">
+<span class="event-icon">🏆</span>
+<h3 class="event-title">Competitions</h3>
+</div>
+<p class="event-description">Challenge your skills in smart contract security, DApp development, and blockchain-based problem-solving competitions to showcase your expertise to the world.</p>
+<div class="event-highlights">
+<div class="highlight-item">Smart Contract Security Challenges</div>
+<div class="highlight-item">DApp Development Contests</div>
+<div class="highlight-item">Global Leaderboard Rankings</div>
+<div class="highlight-item">Monthly Competition Series</div>
+<div class="highlight-item">Industry Recognition & Certificates</div>
+</div>
+<a href="#contact" class="btn">Join Competition</a>
+</div>
+</div>
+
+</section>
+
+<!-- Additional Training Programs -->
+<section class="training-section scroll-reveal">
+<div class="training-content">
+<div class="training-text">
+<h2 class="training-title">🏢 Enterprise Blockchain</h2>
+<p class="training-description">Learn Hyperledger Fabric, Corda, and enterprise-grade blockchain implementations for supply chain, healthcare, and financial services.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">🏗️</span>
+<span class="feature-text">Hyperledger Fabric Architecture</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">⛓️</span>
+<span class="feature-text">Chaincode Development</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">📦</span>
+<span class="feature-text">Supply Chain Use Cases</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🏥</span>
+<span class="feature-text">Healthcare & Identity Management</span>
+</div>
+</div>
+<a href="#contact" class="btn">Explore Enterprise Solutions</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Enterprise Blockchain">
+<div class="image-overlay">
+<div class="overlay-text">Enterprise Solutions</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Web3 & Metaverse -->
+<section class="training-section scroll-reveal">
+<div class="training-content reverse">
+<div class="training-text">
+<h2 class="training-title">🌐 Web3 & Metaverse</h2>
+<p class="training-description">Dive into the future of the internet with Web3 technologies, metaverse development, and next-generation decentralized experiences.</p>
+<div class="training-features">
+<div class="feature-item">
+<span class="feature-icon">🚀</span>
+<span class="feature-text">Web3 Protocol Development</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🥽</span>
+<span class="feature-text">Metaverse & VR Integration</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🎮</span>
+<span class="feature-text">GameFi & Play-to-Earn Models</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">🌍</span>
+<span class="feature-text">Decentralized Social Networks</span>
+</div>
+</div>
+<a href="#contact" class="btn">Enter the Metaverse</a>
+</div>
+<div class="training-image">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Web3 & Metaverse">
+<div class="image-overlay">
+<div class="overlay-text">Future of Internet</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- CTA Section -->
+<section class="cta-section">
+<h2>Ready to Start Your Blockchain Journey?</h2>
+<p>Join thousands of professionals who have transformed their careers with our world-class blockchain training programs</p>
+<div style="margin-top: 2rem;">
+<a href="#contact" class="btn">Enroll Today</a>
+</div>
+</section>
+
+
+<script>
+// Animated background
+function createFloatingCubes() {
+const bgAnimation = document.getElementById('bgAnimation');
+for (let i = 0; i < 20; i++) {
+const cube = document.createElement('div');
+cube.className = 'floating-cube';
+cube.style.left = Math.random() * 100 + '%';
+cube.style.top = Math.random() * 100 + '%';
+cube.style.animationDelay = Math.random() * 8 + 's';
+cube.style.animationDuration = (Math.random() * 4 + 6) + 's';
+bgAnimation.appendChild(cube);
+}
+}
+
+// Scroll reveal animation
+function revealOnScroll() {
+const reveals = document.querySelectorAll('.scroll-reveal');
+reveals.forEach(element => {
+const elementTop = element.getBoundingClientRect().top;
+const elementVisible = 150;
+if (elementTop < window.innerHeight - elementVisible) {
+element.classList.add('active');
+}
+});
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+const header = document.querySelector('header');
+if (window.scrollY > 100) {
+header.style.background = 'rgba(0, 0, 0, 0.98)';
+} else {
+header.style.background = 'rgba(0, 0, 0, 0.95)';
+}
+revealOnScroll();
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+createFloatingCubes();
+revealOnScroll();
+});
+
+// Add interactive hover effects
+document.querySelectorAll('.btn').forEach(btn => {
+btn.addEventListener('mouseenter', function() {
+this.style.transform = 'translateY(-3px) scale(1.05)';
+});
+btn.addEventListener('mouseleave', function() {
+this.style.transform = 'translateY(0) scale(1)';
+});
+});
+
+// Hamburger menu toggle for mobile nav
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', function() {
+navLinks.classList.toggle('active');
+hamburger.classList.toggle('open');
+// Animate hamburger icon
+if (hamburger.classList.contains('open')) {
+hamburger.children[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+hamburger.children[1].style.opacity = '0';
+hamburger.children[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+} else {
+hamburger.children[0].style.transform = '';
+hamburger.children[1].style.opacity = '1';
+hamburger.children[2].style.transform = '';
+}
+});
+
+// Newsletter form submission
+document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('.newsletter-input').value;
+    if (email) {
+        alert('Thank you for subscribing! We will keep you updated with the latest blockchain training programs.');
+        this.querySelector('.newsletter-input').value = '';
+    }
+});
+
+// Contact section scroll behavior
+document.querySelectorAll('a[href="#contact"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Scroll to footer contact section
+        document.querySelector('footer').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+
+// Feature items hover effect
+document.querySelectorAll('.feature-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.borderLeftColor = '#00d4aa';
+        this.style.transform = 'translateX(15px)';
+        this.style.backgroundColor = 'rgba(0, 212, 170, 0.05)';
+    });
+    item.addEventListener('mouseleave', function() {
+        this.style.borderLeftColor = 'rgba(0, 212, 170, 0.3)';
+        this.style.transform = 'translateX(0)';
+        this.style.backgroundColor = 'transparent';
+    });
+});
+
+// Event blocks hover effects
+document.querySelectorAll('.event-block').forEach(block => {
+    block.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px) scale(1.02)';
+        this.style.borderColor = '#00d4aa';
+        this.style.boxShadow = '0 30px 70px rgba(0, 212, 170, 0.25)';
+    });
+    block.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.borderColor = 'rgba(0, 212, 170, 0.2)';
+        this.style.boxShadow = 'none';
+    });
+});
+
+// Staggered animation for training sections
+document.addEventListener('DOMContentLoaded', () => {
+    const trainingSections = document.querySelectorAll('.training-section');
+    trainingSections.forEach((section, index) => {
+        section.style.animationDelay = `${index * 0.2}s`;
+    });
+});
+</script>
+</body>
+</html>

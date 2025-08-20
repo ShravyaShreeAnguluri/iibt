@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - IIBT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+      .nav-links {
+    margin-top: 1.5rem !important;
+  }
+  .mobile-overlay-logo {
+    padding-top: 2.5rem !important;
+  }
+/* Enhanced IIBT Logo Text Styling */
+.logo {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 1.5rem 2.5rem;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    margin: 1.2rem 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Add subtle hover effect */
+.logo:hover {
+    transform: scale(1.05);
+    background: rgba(0, 212, 170, 0.05) !important;
+}
+
+
+/* Logo image styling (if using image instead of text) */
+.logo img {
+    height: 85px;
+    width: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 212, 170, 0.2));
+}
+
+/* Enhanced hover effect for the image */
+.logo:hover img {
+    filter: drop-shadow(0 4px 12px rgba(0, 212, 170, 0.4));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow-x: hidden;
+    padding-top: 150px; /* Adjusted for improved header height */
+}
+
+/* Animated Background Elements */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.floating-cube {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #00d4aa, #0066ff);
+    animation: float 8s infinite ease-in-out;
+    border-radius: 3px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    min-height: 90px;
+}
+
+.social-media {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.social-text {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.social-icons a {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.social-icons .facebook { background: #3b5998; }
+.social-icons .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+.social-icons .linkedin { background: #0077b5; }
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 212, 170, 0.3);
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-links li {
+    flex: 1;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 1rem;
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a:hover {
+    color: #00d4aa;
+    background: rgba(0, 212, 170, 0.1);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #00d4aa, #0066ff);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0 1rem;
+    z-index: 1100;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: linear-gradient(45deg, #00d4aa, #0066ff);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-brand {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 3rem 1rem 1.5rem;
+    }
+    
+    .footer-logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        min-height: auto;
+    }
+
+    .logo {
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        height: 60px;
+    }
+
+    .iibt-i, .iibt-i2, .iibt-b, .iibt-t {
+        font-size: 2.2rem;
+    }
+
+    .iibt-subtitle {
+        font-size: 1rem;
+    }
+
+    .iibt-sub2 {
+        font-size: 0.8rem;
+    }
+    .hero-subtitle {
+        margin-top: 2.5rem !important;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+    .nav-links {
+        flex-direction: column;
+        padding: 0;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        background: rgba(0,0,0,0.98);
+        max-height: 0;
+        overflow-y: auto;
+        transition: max-height 0.4s ease;
+        z-index: 1000;
+        box-shadow: 0 8px 24px rgba(0,212,170,0.1);
+    }
+
+    .nav-links.active {
+        max-height: 90vh;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute;
+        top: 15px;
+        left: 16px;
+        z-index: 1100;
+    }
+   body {
+        padding-top: 85px !important;
+    }
+}
+@media (max-width: 480px) {
+    .logo {
+        height: 55px;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .iibt-i, .iibt-i2, .iibt-b, .iibt-t {
+        font-size: 2rem;
+    }
+
+    .iibt-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .iibt-sub2 {
+        font-size: 0.75rem;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .header-top {
+        padding: 0.4rem;
+    }
+
+    body {
+        padding-top: 80px !important;
+    }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+    .logo {
+        height: 85px;
+        padding: 1rem 2rem;
+        margin: 0.2rem 0 0.2rem 0;
+    }
+
+    .iibt-i, .iibt-i2, .iibt-b, .iibt-t {
+        font-size: 3rem;
+    }
+
+    .iibt-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .iibt-sub2 {
+        font-size: 0.9rem;
+    }
+
+    .logo img {
+        height: 90px;
+    }
+
+    .header-top {
+        padding: 0.5rem 2rem 0.5rem 2rem;
+        min-height: 70px;
+    }
+
+    body {
+        padding-top: 160px;
+    }
+}
+
+/* About Section */
+.about-section {
+padding: 4rem 2rem;
+background: rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(8px);
+color: #fff;
+min-height: calc(100vh - 150px);
+}
+
+.about-container {
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.section-title {
+font-size: 2.5rem;
+text-align: center;
+margin-bottom: 2rem;
+color: #00d4aa;
+font-weight: 700;
+}
+
+.about-content {
+font-size: 1.05rem;
+line-height: 1.8;
+color: rgba(255, 255, 255, 0.92);
+margin-top: 2rem;
+}
+
+.about-content h3 {
+margin-top: 2rem;
+font-size: 1.4rem;
+color: #00d4aa;
+}
+
+.about-content p {
+margin-bottom: 1rem;
+}
+
+.about-content ul {
+list-style-type: disc;
+margin-left: 2rem;
+margin-bottom: 1.5rem;
+}
+
+.about-content li {
+margin-bottom: 0.6rem;
+}
+
+/* Features Section */
+.features {
+padding: 4rem 2rem;
+background: rgba(0, 0, 0, 0.2);
+}
+
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+max-width: 1200px;
+margin: 0 auto;
+margin-top: 3rem;
+}
+
+.feature-card {
+background: rgba(255, 255, 255, 0.05);
+padding: 2rem;
+border-radius: 15px;
+text-align: center;
+transition: all 0.3s ease;
+border: 1px solid rgba(0, 212, 170, 0.2);
+backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+transform: translateY(-10px);
+background: rgba(255, 255, 255, 0.1);
+border-color: #00d4aa;
+box-shadow: 0 20px 40px rgba(0, 212, 170, 0.2);
+}
+
+.feature-card h3 {
+color: #00d4aa;
+margin-bottom: 1rem;
+font-size: 1.3rem;
+}
+
+.feature-card p {
+color: rgba(255, 255, 255, 0.8);
+line-height: 1.6;
+}
+
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+
+.features-grid {
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+}
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+
+.about-section {
+padding: 3rem 1.5rem;
+}
+
+.section-title {
+font-size: 2rem;
+margin-bottom: 1.5rem;
+}
+
+.about-content {
+font-size: 1rem;
+}
+
+.about-content h3 {
+font-size: 1.2rem;
+margin-top: 1.5rem;
+}
+
+.features {
+padding: 3rem 1.5rem;
+}
+
+.features-grid {
+grid-template-columns: 1fr;
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+.feature-card {
+padding: 1.5rem;
+}
+
+.feature-card h3 {
+font-size: 1.2rem;
+}
+}
+
+@media (max-width: 480px) {
+
+.about-section {
+padding: 2rem 1rem;
+}
+
+.section-title {
+font-size: 1.8rem;
+margin-bottom: 1rem;
+}
+
+.about-content {
+font-size: 0.95rem;
+line-height: 1.6;
+}
+
+.about-content h3 {
+font-size: 1.1rem;
+margin-top: 1.2rem;
+}
+
+.about-content ul {
+margin-left: 1.5rem;
+}
+
+.features {
+padding: 2rem 1rem;
+}
+
+.feature-card {
+padding: 1.2rem;
+}
+
+.feature-card h3 {
+font-size: 1.1rem;
+margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+font-size: 0.9rem;
+line-height: 1.5;
+}
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+
+.about-section {
+padding: 1.5rem 0.8rem;
+}
+
+.section-title {
+font-size: 1.6rem;
+}
+
+.about-content {
+font-size: 0.9rem;
+}
+
+.features {
+padding: 1.5rem 0.8rem;
+}
+}
+</style>
+</head>
+<body>
+<div class="bg-animation" id="bgAnimation"></div>
+
+<!-- Header -->
+<header>
+<div class="header-top">
+<div class="logo">
+<img src="https://res.cloudinary.com/dtwovb0vp/image/upload/v1753288818/4_vll2xc.jpg" alt="IIBT Logo">
+</div>
+<div class="social-media">
+<span class="social-text">FOLLOW US SOCIAL MEDIA :</span>
+<div class="social-icons">
+<a href="https://www.facebook.com/p/IIBT-100068485050354/" class="facebook">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>
+</a>
+<a href="https://www.instagram.com/iibt.hyderabad/" class="instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/iibt-hyderabad-032727257/?originalSubdomain=in" class="linkedin">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<nav>
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="nav-links" id="navLinks">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="trainings.html">College Trainings</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="login.html">Login</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Main Content -->
+<section class="about-section scroll-reveal" id="about">
+<div class="about-container">
+<h2 class="section-title">About Us</h2>
+<div class="about-content">
+<p>
+Welcome to the <strong>Indian Institute of Blockchain Technology (IIBT)</strong> – a premier institute dedicated exclusively to Blockchain pioneers. With over a decade of expertise, we specialize in equipping individuals and professionals with the most in-demand Blockchain skills to meet today's evolving technological landscape.
+</p>
+
+<h3>Who We Are</h3>
+<p>
+IIBT is one of the leading results-driven Blockchain training institutes based in Hyderabad. We are committed to delivering high-quality training through a corporate-level curriculum that ensures our students are ready for real-world industry challenges.
+</p>
+
+<h3>Expert-Led Training</h3>
+<p>
+Our training is led by an internationally certified Blockchain expert with experience across more than 10 Blockchain platforms including:
+</p>
+<ul>
+<li>Hyperledger Fabric</li>
+<li>Ethereum</li>
+<li>Corda</li>
+<li>Stellar</li>
+<li>Neo</li>
+<li>...and more</li>
+</ul>
+<p>This diverse expertise enables us to deliver advanced, platform-specific training tailored to current industry needs.</p>
+
+<h3>What We Offer</h3>
+<ul>
+<li>Comprehensive Blockchain training from basic to advanced levels</li>
+<li>A real-time learning environment simulating industry scenarios</li>
+<li>Hands-on project experience using live Blockchain implementations</li>
+<li>Guidance in best practices and experimental knowledge for career readiness</li>
+</ul>
+
+<h3>Our Mission</h3>
+<p>
+To empower the next generation of tech professionals with deep, hands-on Blockchain knowledge and make them industry-ready through practical exposure and expert mentorship.
+</p>
+<h3>Our Vision</h3>
+<p>
+To empower the next generation of tech professionals with deep, hands-on Blockchain knowledge and make them industry-ready through practical exposure and expert mentorship.
+</p>
+</div>
+</div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="courses">
+<div class="about-container">
+<h2 class="section-title">Why Choose IIBT?</h2>
+<div class="features-grid">
+<div class="feature-card scroll-reveal">
+<h3>Industry-First Curriculum</h3>
+<p>Comprehensive courses designed by industry experts covering Blockchain, Web3, DeFi, NFTs, and Metaverse technologies.</p>
+</div>
+<div class="feature-card scroll-reveal">
+<h3>100% Job Assistance</h3>
+<p>Dedicated placement cell with direct industry connections. Our graduates work at top blockchain companies with competitive packages.</p>
+</div>
+<div class="feature-card scroll-reveal">
+<h3>Hands-on Projects</h3>
+<p>Build real-world applications with practical experience in smart contracts, DApps, and enterprise blockchain solutions.</p>
+</div>
+<div class="feature-card scroll-reveal">
+<h3>Expert Faculty</h3>
+<p>Learn from industry veterans with 15+ years of experience in blockchain technology and cryptocurrency markets.</p>
+</div>
+<div class="feature-card scroll-reveal">
+<h3>Global Network</h3>
+<p>Join a community of blockchain professionals and get access to exclusive networking opportunities and events.</p>
+</div>
+<div class="feature-card scroll-reveal">
+<h3>Career Growth</h3>
+<p>Fast-track your career in the fastest-growing tech sector with personalized mentorship and career guidance.</p>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+// Animated background
+function createFloatingCubes() {
+const bgAnimation = document.getElementById('bgAnimation');
+for (let i = 0; i < 20; i++) {
+const cube = document.createElement('div');
+cube.className = 'floating-cube';
+cube.style.left = Math.random() * 100 + '%';
+cube.style.top = Math.random() * 100 + '%';
+cube.style.animationDelay = Math.random() * 8 + 's';
+cube.style.animationDuration = (Math.random() * 4 + 6) + 's';
+bgAnimation.appendChild(cube);
+}
+}
+
+// Scroll reveal animation
+function revealOnScroll() {
+const reveals = document.querySelectorAll('.scroll-reveal');
+reveals.forEach(element => {
+const elementTop = element.getBoundingClientRect().top;
+const elementVisible = 150;
+if (elementTop < window.innerHeight - elementVisible) {
+element.classList.add('active');
+}
+});
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+const header = document.querySelector('header');
+if (window.scrollY > 100) {
+header.style.background = 'rgba(0, 0, 0, 0.98)';
+} else {
+header.style.background = 'rgba(0, 0, 0, 0.95)';
+}
+revealOnScroll();
+});
+
+// Hamburger menu toggle for mobile nav
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', function() {
+navLinks.classList.toggle('active');
+hamburger.classList.toggle('open');
+document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+
+// Animate hamburger icon
+if (hamburger.classList.contains('open')) {
+hamburger.children[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+hamburger.children[1].style.opacity = '0';
+hamburger.children[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+} else {
+hamburger.children[0].style.transform = '';
+hamburger.children[1].style.opacity = '1';
+hamburger.children[2].style.transform = '';
+}
+});
+
+// Close mobile menu when clicking on nav links
+document.querySelectorAll('.nav-links a').forEach(link => {
+link.addEventListener('click', () => {
+navLinks.classList.remove('active');
+hamburger.classList.remove('open');
+document.body.style.overflow = 'auto';
+hamburger.children[0].style.transform = '';
+hamburger.children[1].style.opacity = '1';
+hamburger.children[2].style.transform = '';
+});
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+createFloatingCubes();
+revealOnScroll();
+});
+</script>
+</body>
+</html>

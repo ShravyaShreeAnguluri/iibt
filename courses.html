@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIBT Courses - Blockchain & Web3 Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-top: 150px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            min-height: 90px;
+        }
+
+        .logo {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 1.5rem 2.5rem;
+            border-radius: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 110px;
+            margin: 1.2rem 0;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            background: rgba(0, 212, 170, 0.05) !important;
+        }
+
+        .logo img {
+            height: 85px;
+            width: auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(0, 212, 170, 0.2));
+        }
+
+        .logo:hover img {
+            filter: drop-shadow(0 4px 12px rgba(0, 212, 170, 0.4));
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .social-text {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .social-icons a {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-icons .facebook { background: #3b5998; }
+        .social-icons .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .social-icons .linkedin { background: #0077b5; }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-links li {
+            flex: 1;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 1rem;
+            display: block;
+            text-align: center;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #00d4aa;
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            margin: 0 1rem;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay-logo {
+            display: none;
+            width: 100vw;
+            text-align: center;
+            margin-top: 4.5rem;
+            margin-bottom: 0;
+            z-index: 2101;
+        }
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .floating-cube {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            animation: float 8s infinite ease-in-out;
+            border-radius: 3px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Animated Background Elements */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4aa, #0066ff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #00d4aa;
+            font-weight: 600;
+        }
+
+        /* Filters Section */
+        .filters-section {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .filters-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .search-bar {
+            grid-column: 1;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            color: #00d4aa;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .search-bar input, .filter-group select {
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus, .filter-group select:focus {
+            border-color: #00d4aa;
+            box-shadow: 0 0 15px rgba(0, 212, 170, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .filter-group select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        /* Results Info */
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .results-info div {
+            font-size: 1.1rem;
+            color: #00d4aa;
+            font-weight: 600;
+        }
+
+        .clear-filters {
+            background: transparent;
+            border: 2px solid #00d4aa;
+            color: #00d4aa;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .clear-filters:hover {
+            background: #00d4aa;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #00d4aa;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading.show {
+            opacity: 1;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(26, 26, 46, 0.5));
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.05), rgba(0, 102, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .course-card:hover::before {
+            opacity: 1;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 212, 170, 0.2);
+            border-color: #00d4aa;
+        }
+
+        .course-image {
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .course-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #00d4aa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-category {
+            color: #0066ff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .course-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .course-duration::before {
+            content: "⏱";
+        }
+
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .course-instructor::before {
+            content: "👨‍💼";
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ff6b6b;
+        }
+
+        .course-price.free {
+            color: #00d4aa;
+        }
+
+        .enroll-btn {
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 170, 0.4);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .no-results h3 {
+            font-size: 2rem;
+            color: #00d4aa;
+            margin-bottom: 1rem;
+        }
+
+        .no-results p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 150px !important;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                min-height: auto;
+            }
+
+            .logo {
+                margin: 0.5rem 0;
+                padding: 0.5rem 1rem;
+                height: 60px;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                padding: 0;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100vw;
+                background: rgba(0,0,0,0.98);
+                max-height: 0;
+                overflow-y: auto;
+                transition: max-height 0.4s ease;
+                z-index: 1000;
+                box-shadow: 0 8px 24px rgba(0,212,170,0.1);
+                margin-top: 1.5rem !important;
+            }
+
+            .nav-links.active {
+                max-height: 90vh;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 15px;
+                left: 16px;
+                z-index: 1100;
+            }
+
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                z-index: 1200;
+                background: rgba(0,0,0,0.95);
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .filters-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                grid-column: 1;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .results-info {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 80px !important;
+            }
+
+            .logo {
+                height: 55px;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .header-top {
+                padding: 0.4rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .filters-section {
+                padding: 1.5rem;
+            }
+
+            .course-card {
+                margin: 0 0.5rem;
+            }
+
+            .course-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .enroll-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Large screen optimizations */
+        @media (min-width: 1200px) {
+            body {
+                padding-top: 160px;
+            }
+
+            .logo {
+                height: 85px;
+                padding: 1rem 2rem;
+                margin: 0.2rem 0 0.2rem 0;
+            }
+
+            .logo img {
+                height: 90px;
+            }
+
+            .header-top {
+                padding: 0.5rem 2rem 0.5rem 2rem;
+                min-height: 70px;
+            }
+        }
+
+        /* Additional interactive effects */
+        .course-card:active {
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        .search-bar input:hover {
+            border-color: rgba(0, 212, 170, 0.5);
+        }
+
+        .filter-group select:hover {
+            border-color: rgba(0, 212, 170, 0.5);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4aa, #0066ff);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #00bfaa, #0055ee);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dtwovb0vp/image/upload/v1753288818/4_vll2xc.jpg" alt="IIBT Logo">
+            </div>
+            <div class="social-media">
+                <span class="social-text">FOLLOW US SOCIAL MEDIA :</span>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/p/IIBT-100068485050354/" class="facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/iibt.hyderabad/" class="instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/iibt-hyderabad-032727257/?originalSubdomain=in" class="linkedin">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="trainings.html">College Trainings</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <h1>Courses</h1>
+            <p>Discover amazing courses to boost your skills</p>
+        </div>
+
+        <div class="filters-section">
+            <div class="filters-container">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search courses by title, instructor, or description...">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="categoryFilter">Category</label>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="levelFilter">Level</label>
+                    <select id="levelFilter">
+                        <option value="">All Levels</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="priceFilter">Price Range</label>
+                    <select id="priceFilter">
+                        <option value="">All Prices</option>
+                        <option value="free">Free</option>
+                        <option value="0-50">$0 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-200">$100 - $200</option>
+                        <option value="200+">$200+</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="durationFilter">Duration</label>
+                    <select id="durationFilter">
+                        <option value="">All Durations</option>
+                        <option value="short">Under 5 hours</option>
+                        <option value="medium">5-20 hours</option>
+                        <option value="long">20+ hours</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <div>
+                <span id="resultsCount">0</span> courses found
+            </div>
+            <button class="clear-filters" onclick="clearAllFilters()">Clear All Filters</button>
+        </div>
+
+        <div class="loading" id="loading">
+            Loading courses...
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Courses will be dynamically loaded here -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>No courses found</h3>
+            <p>Try adjusting your filters or search terms</p>
+        </div>
+    </div>
+
+    <script>
+        // Animated background
+        function createFloatingCubes() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            for (let i = 0; i < 20; i++) {
+                const cube = document.createElement('div');
+                cube.className = 'floating-cube';
+                cube.style.left = Math.random() * 100 + '%';
+                cube.style.top = Math.random() * 100 + '%';
+                cube.style.animationDelay = Math.random() * 8 + 's';
+                cube.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                bgAnimation.appendChild(cube);
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Hamburger menu toggle for mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('open');
+            
+            // Animate hamburger icon
+            if (hamburger.classList.contains('open')) {
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+            } else {
+                hamburger.children[0].style.transform = '';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = '';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Sample course data (simulating backend API)
+        const coursesData = [
+            {
+                id: 1,
+                title: "Complete JavaScript Bootcamp",
+                description: "Master JavaScript from basics to advanced concepts including ES6+, DOM manipulation, and modern frameworks.",
+                category: "Programming",
+                level: "Beginner",
+                price: 89.99,
+                duration: 25,
+                instructor: "John Smith",
+                icon: "💻"
+            },
+            {
+                id: 2,
+                title: "React.js Masterclass",
+                description: "Build modern web applications with React, Redux, and advanced React patterns.",
+                category: "Programming",
+                level: "Intermediate",
+                price: 129.99,
+                duration: 30,
+                instructor: "Sarah Wilson",
+                icon: "⚛"
+            },
+            {
+                id: 3,
+                title: "Digital Marketing Fundamentals",
+                description: "Learn SEO, social media marketing, content strategy, and analytics to grow your business online.",
+                category: "Marketing",
+                level: "Beginner",
+                price: 0,
+                duration: 15,
+                instructor: "Mike Johnson",
+                icon: "📈"
+            },
+            {
+                id: 4,
+                title: "Python Data Science",
+                description: "Analyze data using Python, pandas, numpy, and machine learning libraries.",
+                category: "Data Science",
+                level: "Intermediate",
+                price: 159.99,
+                duration: 40,
+                instructor: "Dr. Emily Chen",
+                icon: "🐍"
+            },
+            {
+                id: 5,
+                title: "UI/UX Design Principles",
+                description: "Create beautiful and user-friendly interfaces using design thinking and modern tools.",
+                category: "Design",
+                level: "Beginner",
+                price: 79.99,
+                duration: 20,
+                instructor: "Alex Rivera",
+                icon: "🎨"
+            },
+            {
+                id: 6,
+                title: "Machine Learning with TensorFlow",
+                description: "Build and deploy machine learning models using TensorFlow and Keras.",
+                category: "Data Science",
+                level: "Advanced",
+                price: 199.99,
+                duration: 50,
+                instructor: "Dr. James Park",
+                icon: "🤖"
+            },
+            {
+                id: 7,
+                title: "WordPress Development",
+                description: "Create custom WordPress themes and plugins from scratch.",
+                category: "Programming",
+                level: "Intermediate",
+                price: 69.99,
+                duration: 18,
+                instructor: "Lisa Thompson",
+                icon: "📝"
+            },
+            {
+                id: 8,
+                title: "Advanced Excel Analytics",
+                description: "Master Excel formulas, pivot tables, VBA, and data visualization techniques.",
+                category: "Business",
+                level: "Intermediate",
+                price: 49.99,
+                duration: 12,
+                instructor: "Robert Davis",
+                icon: "📊"
+            },
+            {
+                id: 9,
+                title: "Blockchain Development",
+                description: "Learn to build decentralized applications using Ethereum and Solidity.",
+                category: "Programming",
+                level: "Advanced",
+                price: 249.99,
+                duration: 35,
+                instructor: "David Kim",
+                icon: "⛓"
+            },
+            {
+                id: 10,
+                title: "Photoshop for Beginners",
+                description: "Master photo editing, digital art, and graphic design using Adobe Photoshop.",
+                category: "Design",
+                level: "Beginner",
+                price: 0,
+                duration: 8,
+                instructor: "Maria Garcia",
+                icon: "🖼"
+            },
+            {
+                id: 11,
+                title: "Cloud Computing with AWS",
+                description: "Deploy and manage applications on Amazon Web Services cloud platform.",
+                category: "Technology",
+                level: "Intermediate",
+                price: 179.99,
+                duration: 28,
+                instructor: "Kevin Brown",
+                icon: "☁"
+            },
+            {
+                id: 12,
+                title: "Project Management Professional",
+                description: "Learn project management methodologies, tools, and best practices for successful delivery.",
+                category: "Business",
+                level: "Intermediate",
+                price: 119.99,
+                duration: 22,
+                instructor: "Jennifer Lee",
+                icon: "📋"
+            }
+        ];
+
+        let filteredCourses = [...coursesData];
+        let currentFilters = {
+            search: '',
+            category: '',
+            level: '',
+            price: '',
+            duration: ''
+        };
+
+        // Initialize the application
+        function init() {
+            createFloatingCubes();
+            populateCategories();
+            displayCourses(coursesData);
+            setupEventListeners();
+            updateResultsCount();
+        }
+
+        // Populate category filter options
+        function populateCategories() {
+            const categories = [...new Set(coursesData.map(course => course.category))];
+            const categorySelect = document.getElementById('categoryFilter');
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('categoryFilter').addEventListener('change', handleCategoryFilter);
+            document.getElementById('levelFilter').addEventListener('change', handleLevelFilter);
+            document.getElementById('priceFilter').addEventListener('change', handlePriceFilter);
+            document.getElementById('durationFilter').addEventListener('change', handleDurationFilter);
+        }
+
+        // Handle search
+        function handleSearch(e) {
+            currentFilters.search = e.target.value.toLowerCase();
+            applyFilters();
+        }
+
+        // Handle category filter
+        function handleCategoryFilter(e) {
+            currentFilters.category = e.target.value;
+            applyFilters();
+        }
+
+        // Handle level filter
+        function handleLevelFilter(e) {
+            currentFilters.level = e.target.value;
+            applyFilters();
+        }
+
+        // Handle price filter
+        function handlePriceFilter(e) {
+            currentFilters.price = e.target.value;
+            applyFilters();
+        }
+
+        // Handle duration filter
+        function handleDurationFilter(e) {
+            currentFilters.duration = e.target.value;
+            applyFilters();
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            showLoading();
+            
+            setTimeout(() => {
+                filteredCourses = coursesData.filter(course => {
+                    // Search filter
+                    if (currentFilters.search && !matchesSearch(course, currentFilters.search)) {
+                        return false;
+                    }
+
+                    // Category filter
+                    if (currentFilters.category && course.category !== currentFilters.category) {
+                        return false;
+                    }
+
+                    // Level filter
+                    if (currentFilters.level && course.level !== currentFilters.level) {
+                        return false;
+                    }
+
+                    // Price filter
+                    if (currentFilters.price && !matchesPriceRange(course.price, currentFilters.price)) {
+                        return false;
+                    }
+
+                    // Duration filter
+                    if (currentFilters.duration && !matchesDuration(course.duration, currentFilters.duration)) {
+                        return false;
+                    }
+
+                    return true;
+                });
+
+                displayCourses(filteredCourses);
+                updateResultsCount();
+                hideLoading();
+            }, 300);
+        }
+
+        // Check if course matches search query
+        function matchesSearch(course, query) {
+            const searchFields = [
+                course.title,
+                course.description,
+                course.instructor,
+                course.category
+            ].join(' ').toLowerCase();
+            
+            return searchFields.includes(query);
+        }
+
+        // Check if price matches selected range
+        function matchesPriceRange(price, range) {
+            switch (range) {
+                case 'free':
+                    return price === 0;
+                case '0-50':
+                    return price > 0 && price <= 50;
+                case '50-100':
+                    return price > 50 && price <= 100;
+                case '100-200':
+                    return price > 100 && price <= 200;
+                case '200+':
+                    return price > 200;
+                default:
+                    return true;
+            }
+        }
+
+        // Check if duration matches selected range
+        function matchesDuration(duration, range) {
+            switch (range) {
+                case 'short':
+                    return duration < 5;
+                case 'medium':
+                    return duration >= 5 && duration <= 20;
+                case 'long':
+                    return duration > 20;
+                default:
+                    return true;
+            }
+        }
+
+        // Display courses
+        function displayCourses(courses) {
+            const coursesGrid = document.getElementById('coursesGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (courses.length === 0) {
+                coursesGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            coursesGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            coursesGrid.innerHTML = courses.map(course => `
+                <div class="course-card" onclick="enrollCourse(${course.id})">
+                    <div class="course-image">
+                        <span class="course-level">${course.level}</span>
+                        ${course.icon}
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">${course.category}</div>
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="course-meta">
+                            <span class="course-duration">${course.duration} hours</span>
+                            <span class="course-instructor">${course.instructor}</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price ${course.price === 0 ? 'free' : ''}">
+                                ${course.price === 0 ? 'Free' : '$' + course.price}
+                            </span>
+                            <button class="enroll-btn" onclick="event.stopPropagation(); enrollCourse(${course.id})">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update results count
+        function updateResultsCount() {
+            document.getElementById('resultsCount').textContent = filteredCourses.length;
+        }
+
+        // Show loading state
+        function showLoading() {
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('coursesGrid').style.opacity = '0.5';
+        }
+
+        // Hide loading state
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('coursesGrid').style.opacity = '1';
+        }
+
+        // Clear all filters
+        function clearAllFilters() {
+            currentFilters = {
+                search: '',
+                category: '',
+                level: '',
+                price: '',
+                duration: ''
+            };
+
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('levelFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            document.getElementById('durationFilter').value = '';
+
+            filteredCourses = [...coursesData];
+            displayCourses(filteredCourses);
+            updateResultsCount();
+        }
+
+        // Enroll in course (simulated backend call)
+        function enrollCourse(courseId) {
+            const course = coursesData.find(c => c.id === courseId);
+            if (course) {
+                alert(`Enrolling in "${course.title}"!\n\nPrice: ${course.price === 0 ? 'Free' : '$' + course.price}\nInstructor: ${course.instructor}\n\nThis would normally redirect to payment/enrollment page.`);
+                
+                // Simulate API call
+                console.log('API Call: POST /api/enroll', {
+                    courseId: courseId,
+                    userId: 'current_user_id',
+                    timestamp: new Date().toISOString()
+                });
+            }
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
